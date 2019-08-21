@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	<title>Anemoi Ground Control Station</title>
+	<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+	<link rel="stylesheet" href="../css/photon.min.css">
+	<link rel="stylesheet" href="../css/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="../css/bootstrap-reboot.min.css">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/bulma.min.css">
+	<link rel="stylesheet" href="../css/bulma-docs.min.css">
+	<link rel="stylesheet" href="../css/materialdesignicons.css">
+	<link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+
+	<div class="window">
+		<div id="header-window" class="box">
+			<section id="header" class="section">
+				<div id="logo" class="container">
+					<h1 class="title">
+						Anemoi UAV
+					</h1>
+					<p class="subtitle">
+						Ground Control Station
+					</p>
+				</div>
+
+				<div id="critical-status" class="container">
+
+					<div id="connection-uav-status" class="connection-status box">
+						<span class="subtitle is-large">UAV Status</span>
+						<div class="level">
+							<span class="icon is-medium"><i class="mdi mdi-24px mdi-battery-alert"></i></span>
+							<span class="icon is-medium"><i class="mdi mdi-24px mdi-network-strength-off"></i></span>
+							<input class="input is-normal connection-address-input" id="uav-ip" type="uav-ip"
+								placeholder="192.168.1.1">
+							<button id="btn-uav-connect" class="button is-normal is-danger is-rounded">Connect</button>
+						</div>
+					</div>
+
+					<div id="connection-controller-status" class="connection-status box">
+						<span class="subtitle is-large">Controller Status</span>
+						<div class="level">
+							<span class="icon is-medium"><i class="mdi mdi-24px mdi-battery-alert"></i></span>
+							<span class="icon is-medium"><i class="mdi mdi-24px mdi-link-off"></i></span>
+							<input class="input is-normal connection-address-input" id="controller-port"
+								type="controller-port" placeholder="/dev/USB1">
+							<button id="btn-controller-connect"
+								class="button is-normal is-danger is-rounded">Connect</button>
+						</div>
+					</div>
+
+					<div id="critical-uav-status" class="box">
+						<div class="container level">
+							<span class="icon is-large has-text-danger"><i
+									class="mdi mdi-36px mdi-alert-outline"></i></span>
+							<span class="content subtitle">No UAV Linked!</span>
+						</div>
+					</div>
+
+				</div>
+
+			</section>
+		</div>
+		<div class="">
+			<div id="main-view" class="columns is-variable is-3">
+				<div id="sidebar" class="column is-2 is-vcenteredora">
+					<aside class="menu">
+						<p class="menu-label">
+							General
+						</p>
+						<ul class="menu-list">
+							<li><a class="is-active">Dashboard</a></li>
+							<li><a>New Mission</a></li>
+							<li><a>Missions</a></li>
+							<li><a>Status</a></li>
+							<li><a>Sensors</a></li>
+						</ul>
+
+						<p class="menu-label">
+							Craft-Specific
+						</p>
+						<ul class="menu-list">
+							<li><a>Configuration</a></li>
+							<li><a>Logs</a></li>
+							<li><a>Test</a></li>
+							<li><a>Miscellaneous</a></li>
+							<li><a>Debug</a></li>
+							<li><a>Console</a></li>
+						</ul>
+					</aside>
+				</div>
+				<div id="panel-view" class="column is-normal tile is-ancestor">
+					<div class="tile is-parent">
+						<article id="video-feed" class="tile is-child notification is-primary">
+							Video Feed Here
+							<!-- <div id="front-camera" class="box">
+			
+									</div> -->
+						</article>
+					</div>
+					<div class="tile is-parent">
+						<article id="uav-status" class="tile is-child notification is-info">
+							Status: <br> Velocity :
+						</article>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

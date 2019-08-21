@@ -1,0 +1,39 @@
+{
+  "name": "anemoigroundstation",
+  "version": "1.0.0",
+  "description": "Ground Control Station for UAV System, Mission Planning and Tracking as well as servicing, configuring and debugging",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron . --no-sandbox",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ashishkumar4/AnemoiGroundStation.git"
+  },
+  "keywords": [
+    "uav",
+    "gcs",
+    "configurator",
+    "commandcenter"
+  ],
+  "author": "Ashish Kumar Singh",
+  "binary": {
+    "module_name": "Drone",
+    "module_path": "./lib/binding/{configuration}/{node_abi}-{platform}-{arch}/",
+    "host": "https://node-pre-gyp-tests.s3-us-west-1.amazonaws.com"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ashishkumar4/AnemoiGroundStation/issues"
+  },
+  "homepage": "https://github.com/ashishkumar4/AnemoiGroundStation#readme",
+  "dependencies": {
+    "@mdi/font": "^4.0.96",
+    "bindings": "^1.5.0",
+    "bulma": "^0.7.5",
+    "node-pre-gyp": "^0.13.0"
+  },
+  "gypfile": true,
+  "devDependencies": {}
+}
