@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron . --no-sandbox",
+    "build": "bash build.sh gcc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

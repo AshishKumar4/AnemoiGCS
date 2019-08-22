@@ -4,11 +4,17 @@ const path = require('path')
 
 console.log("Initializing...")
 
+var controllerObj;
+var uavObj;
+
 try {
 	console.log(process.versions)
 	console.log("Attempting to load Base Drone Module")
-	const drone = require('bindings')('Drone.node')
+	var drone = require('bindings')('Drone.node')
+	controllerObj = new drone.ManualController("/dev/ttyUSB0");
 	console.log("Module loaded")
+	console.log(controllerObj.yaw);
+	console.log(controllerObj.connectionStatus);
 }
 catch (err)
 {

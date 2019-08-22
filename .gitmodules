@@ -1,3 +1,6 @@
 [submodule "Modules/rpclib"]
 	path = Modules/rpclib
 	url = https://github.com/rpclib/rpclib.git
+[submodule "Modules/BaseSystem"]
+	path = Modules/BaseSystem
+	url = https://github.com/ashishkumar4/AnemoiLink.git

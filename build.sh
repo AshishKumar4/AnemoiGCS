@@ -35,7 +35,12 @@ cd BaseSystem
 bash build.sh $1 $2
 cp build/libDrone.so ../libDrone.so 
 
-cd ../../
+cd ../
+cp libDrone.so /usr/lib/libDrone.so
+cp librpc.so /usr/lib/librpc.so
+
+cd ..
 
 swig -javascript -node -c++ Modules/BaseSystem/Drone.i
 CXXFLAGS='-fexceptions -w' electron-rebuild
+#CXXFLAGS="-fpermissive -fexceptions -w" node-pre-gyp rebuild
