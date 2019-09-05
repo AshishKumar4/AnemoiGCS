@@ -1,0 +1,65 @@
+<div class="level">
+	<article class="tile box notification columns is-variable is-12">
+		<div class="table table-responsive tile box column is-7" style="max-width:65%; margin:auto">
+			<table class="table table-responsive table-striped table-bordered">
+				<thead>
+					<tr>
+						<td>Waypoints</td>
+						<td>Max V (m/s)</td>
+						<td>Delay</td>
+						<td>Action</td>
+					</tr>
+				</thead>
+				<tbody id="TextBoxAdder">
+				</tbody>
+				<tfoot>
+					<tr>
+						<td><input id="destination" name="waypoints" type="text" value="0,0,0"></td>
+						<td><input id="velocity" name="vel" value="10"></td>
+						<td><input id="delay" name="delay" value="10"></td>
+						<th colspan="4">
+							<button id="btnAdd" type="button" class="button is-success" data-toggle="tooltip"
+								data-original-title="Add more controls"><i
+									class="glyphicon glyphicon-plus-sign"></i>&nbsp; Add&nbsp;</button></th>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+		<div class="tile box column">
+			<button id="btn-toggleNav" class="button is-warning" onclick="toggleNavigation()">Start Navigation</button>
+		</div>
+	</article>
+</div>
+
+<div class="tile is-ancestor columns is-12">
+	<div id="waypoint-list-holder" class="tile is-parent column is-4">
+		<article class="tile is-child box notification is-white">
+			<div class="table table-responsive">
+				<table class="table table-responsive table-striped table-bordered">
+					<thead>
+						<tr>
+							<td>ID</td>
+							<td>Waypoints</td>
+							<td>Max V (m/s)</td>
+							<td>Delay</td>
+							<td>Remove</td>
+						</tr>
+					</thead>
+					<tbody id="TextBoxContainer">
+					</tbody>
+					<tfoot>
+						<tr>
+							<th colspan="5"></th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</article>
+	</div>
+
+	<div class="tile is-parent">
+		<article id="map-draw" class="tile is-child box notification is-info">
+			Map to draw mission path here
+		</article>
+	</div>
+</div>

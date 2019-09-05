@@ -7,20 +7,7 @@ console.log("Initializing...")
 var controllerObj;
 var uavObj;
 
-try {
-	console.log(process.versions)
-	console.log("Attempting to load Base Drone Module")
-	var drone = require('bindings')('Drone.node')
-	controllerObj = new drone.ManualController("/dev/ttyUSB0");
-	console.log("Module loaded")
-	console.log(controllerObj.yaw);
-	console.log(controllerObj.connectionStatus);
-}
-catch (err)
-{
-	console.log(err)
-	console.log("There was an error loading the module")
-}
+console.log(process.versions)
 
 function createWindow () {
     // Create the browser window.

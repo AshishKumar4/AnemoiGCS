@@ -1,10 +1,5 @@
 #! /bin/bash
 
-cd Modules
-echo "Building rpclib dependency..."
-
-cd rpclib 
-
 if [ ! -d "build" ]; then
     mkdir build 
     cd build 
@@ -27,20 +22,7 @@ if [ ! -d "build" ]; then
 fi
 cd build
 make
-cp librpc.so ../../librpc.so 
-cd ../../
 
-echo "Building C++ Native Modules..."
-cd BaseSystem
-bash build.sh $1 $2
-#cp build/libDrone.so ../libDrone.so 
+cp libDrone.so /usr/lib/libDrone.so
 
-cd ../
-#cp libDrone.so /usr/lib/libDrone.so
-cp librpc.so /usr/lib/librpc.so
-
-cd ..
-
-swig -javascript -node -c++ Modules/BaseSystem/Drone.i
-CXXFLAGS='-fexceptions -w' electron-rebuild
-#CXXFLAGS="-fpermissive -fexceptions -w" node-pre-gyp rebuild
+echo "Compilation Completed!\n"

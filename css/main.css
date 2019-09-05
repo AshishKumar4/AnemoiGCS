@@ -83,3 +83,11 @@
 	float: right;
 	margin-right: 5%;
 }
+
+#waypoint-list-holder {
+	max-width:30%;
+}
+
+#map-draw {
+	height: 50vh;
+}

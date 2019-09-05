@@ -3,7 +3,7 @@
 		{
 			"target_name" : "Drone",
 			"sources": [ "Modules/BaseSystem/Drone_wrap.cxx"],
-			"libraries": ["<!(pwd)/Modules/librpc.so", "<!(pwd)/Modules/libDrone.so"]
+			"libraries": ["/usr/lib/librpc.so", "/usr/lib/libDrone.so"]
 		}
 	]
 }

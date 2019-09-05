@@ -7,18 +7,16 @@
 	<title>Anemoi Ground Control Station</title>
 	<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 	<link rel="stylesheet" href="../css/photon.min.css">
-	<link rel="stylesheet" href="../css/bootstrap-grid.min.css">
-	<link rel="stylesheet" href="../css/bootstrap-reboot.min.css">
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/bulma.min.css">
-	<link rel="stylesheet" href="../css/bulma-docs.min.css">
 	<link rel="stylesheet" href="../css/materialdesignicons.css">
 	<link rel="stylesheet" href="../css/main.css">
+	<script src="https://code.jquery.com/jquery-latest.js"></script>
+	<script src="../js/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="../js/app.js"></script>
 </head>
 
 <body>
-
 	<div class="window">
 		<div id="header-window" class="box">
 			<section id="header" class="section">
@@ -36,23 +34,24 @@
 					<div id="connection-uav-status" class="connection-status box">
 						<span class="subtitle is-large">UAV Status</span>
 						<div class="level">
-							<span class="icon is-medium"><i class="mdi mdi-24px mdi-battery-alert"></i></span>
-							<span class="icon is-medium"><i class="mdi mdi-24px mdi-network-strength-off"></i></span>
+							<span class="icon is-medium"><i id="iconUavStatusBat" class="mdi mdi-24px mdi-battery-alert"></i></span>
+							<span class="icon is-medium"><i id="iconUuavStatusNet" class="mdi mdi-24px mdi-network-strength-off"></i></span>
 							<input class="input is-normal connection-address-input" id="uav-ip" type="uav-ip"
-								placeholder="192.168.1.1">
-							<button id="btn-uav-connect" class="button is-normal is-danger is-rounded" onclick="connectUAV()">Connect</button>
+								placeholder="192.168.1.1" value="0.0.0.0">
+							<button id="btn-uav-connect" class="button is-normal is-rounded is-danger"
+								onclick="connectUAV()">Connect</button>
 						</div>
 					</div>
 
 					<div id="connection-controller-status" class="connection-status box">
 						<span class="subtitle is-large">Controller Status</span>
 						<div class="level">
-							<span class="icon is-medium"><i class="mdi mdi-24px mdi-battery-alert"></i></span>
-							<span class="icon is-medium"><i class="mdi mdi-24px mdi-link-off"></i></span>
+							<span class="icon is-medium"><i id="iconControllerStatusBat" class="mdi mdi-24px mdi-battery-alert"></i></span>
+							<span class="icon is-medium"><i id="iconControllerStatusLink" class="mdi mdi-24px mdi-link-off"></i></span>
 							<input class="input is-normal connection-address-input" id="controller-port"
-								type="controller-port" placeholder="/dev/USB1">
-							<button id="btn-controller-connect"
-								class="button is-normal is-danger is-rounded" onclick="connectController()">Connect</button>
+								type="controller-port" placeholder="/dev/ttyUSB0" value="/dev/ttyUSB0">
+							<button id="btn-controller-connect" class="button is-normal is-rounded is-danger"
+								onclick="connectController()">Connect</button>
 						</div>
 					</div>
 
@@ -76,47 +75,45 @@
 							General
 						</p>
 						<ul class="menu-list">
-							<li><a class="is-active">Dashboard</a></li>
-							<li><a>New Mission</a></li>
-							<li><a>Missions</a></li>
-							<li><a>Status</a></li>
-							<li><a>Sensors</a></li>
+							<li><a onclick="switchPane('dashboard')" class="sidebar-btn is-active">Dashboard</a></li>
+							<li><a onclick="switchPane('new_mission')" class="sidebar-btn">New Mission</a></li>
+							<li><a onclick="switchPane('missions')" class="sidebar-btn">Missions</a></li>
+							<li><a onclick="switchPane('status')" class="sidebar-btn">Status</a></li>
+							<li><a onclick="switchPane('sensors')" class="sidebar-btn">Sensors</a></li>
 						</ul>
 
 						<p class="menu-label">
 							Craft-Specific
 						</p>
 						<ul class="menu-list">
-							<li><a>Configuration</a></li>
-							<li><a>Logs</a></li>
-							<li><a>Test</a></li>
-							<li><a>Miscellaneous</a></li>
-							<li><a>Debug</a></li>
-							<li><a>Console</a></li>
+							<li><a onclick="switchPane('configuration')" class="sidebar-btn">Configuration</a></li>
+							<li><a onclick="switchPane('logs')" class="sidebar-btn">Logs</a></li>
+							<li><a onclick="switchPane('test')" class="sidebar-btn">Test</a></li>
+							<li><a onclick="switchPane('miscellaneous')" class="sidebar-btn">Miscellaneous</a></li>
+							<li><a onclick="switchPane('debug')" class="sidebar-btn">Debug</a></li>
+							<li><a onclick="switchPane('console')" class="sidebar-btn">Console</a></li>
 						</ul>
+						<script>
+							var btns = document.getElementsByClassName("sidebar-btn");
+							for (var i = 0; i < btns.length; i++) {
+								btns[i].addEventListener("click", function () {
+									var current = document.getElementsByClassName("is-active");
+									current[0].className = current[0].className.replace(" is-active", "");
+									this.className += " is-active";
+								});
+							}
+						</script>
 					</aside>
 				</div>
-				<div id="panel-view" class="column is-normal tile is-ancestor">
-					<div class="tile is-parent">
-						<article id="video-feed" class="tile is-child notification is-primary">
-							Video Feed Here
-							<!-- <div id="front-camera" class="box">
-			
-									</div> -->
-						</article>
-					</div>
-					<div class="tile is-parent">
-						<article id="uav-status" class="tile is-child notification is-info">
-							Status: <br> Velocity :
-						</article>
-					</div>
-
-
+				<div id="panel-view" class="column is-normal">
+					<!-- <link rel="import" href="./dashboard.html"> -->
 				</div>
 			</div>
 		</div>
 	</div>
-
+	<script>
+		initialize();
+	</script>
 </body>
 
 </html>
