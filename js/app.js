@@ -83,7 +83,6 @@ function loadHTML(file, elem) {
 
 function initialize() {
 	console.log("Loading AnemoiLink Native Module")
-	anemoiLink = require('bindings')('Drone.node')
 	fs = require('fs'); // Load the File System to execute our common tasks (CRUD)
 	console.log("Module loaded")
 
@@ -123,6 +122,7 @@ function initialize() {
 	currentPane = 'new_mission'
 	var d = document.getElementById("panel-view")
 	loadHTML('./views/' + currentPane + '.html', d)
+	anemoiLink = require('bindings')('Drone.node')
 	
 }
 
