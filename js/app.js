@@ -82,8 +82,6 @@ function loadHTML(file, elem) {
 */
 
 function initialize() {
-	console.log("Loading AnemoiLink Native Module")
-	anemoiLink = require('bindings')('Drone.node')
 	fs = require('fs'); // Load the File System to execute our common tasks (CRUD)
 	console.log("Module loaded")
 
@@ -120,9 +118,11 @@ function initialize() {
 	registerUpdates('statusUAVConnection', 1, 'iconUavStatusBat.className', "mdi mdi-24px mdi-battery")
 	registerUpdates('statusUAVConnection', 1, 'iconUuavStatusNet.className', "mdi mdi-24px mdi-network-strength")
 
-	currentPane = 'new_mission'
+	currentPane = 'dashboard'
 	var d = document.getElementById("panel-view")
 	loadHTML('./views/' + currentPane + '.html', d)
+	console.log("Loading AnemoiLink Native Module")
+	anemoiLink = require('bindings')('Drone.node')
 	
 }
 
