@@ -1,15 +1,79 @@
 <div class="tile is-ancestor">
 	<div class="tile is-parent">
-		<article id="video-feed" class="tile is-child notification is-primary">
-			Video Feed Here
-			<!-- <div id="front-camera" class="box">
+		<div class="column">
+						<article id="video-feed" class="tile is-child">
+							Video Feed Here
+							<video id='my-video' class='video-js is-primary' controls preload='auto' width='640' height='364' poster='MY_VIDEO_POSTER.jpg' data-setup='{}'>
+    						<source src='MY_VIDEO.mp4' type='video/mp4'>
+    						<source src='MY_VIDEO.webm' type='video/webm'>
+    						<p class='vjs-no-js'>
+      								To view this video please enable JavaScript, and consider upgrading to a web browser that
+      						<a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+    						</p>
+  							</video>
+  							<script src='https://vjs.zencdn.net/7.6.0/video.js'></script>
+								<!-- <div id="front-camera" class="box">
 					
 											</div> -->
-		</article>
-	</div>
-	<div class="tile is-parent">
-		<article id="uav-status" class="tile is-child notification is-info">
-			Status: <br> Velocity :
-		</article>
-	</div>
-</div>
+						</article>
+						<article>
+							<div id="map"></div>
+							<script>
+							// Initialize and add the map
+							function initMap() {
+  							// The location of Uluru
+  							var uluru = {lat: -25.344, lng: 131.036};
+  							// The map, centered at Uluru
+  							var map = new google.maps.Map(
+      						document.getElementById('map'), {zoom: 4, center: uluru});
+  							// The marker, positioned at Uluru
+  							var marker = new google.maps.Marker({position: uluru, map: map});
+							}
+    					</script>
+						</article>
+					</div>
+				</div>
+				<div class="tile is-parent">
+					<div class="column">
+						<nav class="level">
+							<p class="level-left">
+								<strong>Status </strong>
+							</p>
+						</nav>	
+						<nav class="level">
+							<p id="pad"class="level-left is-size-4">Velocity : <u><output id="Velocity"> </output></u> </p>
+							<p style="padding-left: 60px;" class="level-right is-size-4">Direction: <u><output id="Direction"> </output> </u> </p> 
+						</nav>		
+						<nav class="level">	
+							<p id="pad" class="level-left is-size-4"> Altitude: <p id="Altitude">       </p>
+							</p>
+						</nav>
+						<hr>
+						<nav class="level" id="pad">
+							<div class="level-left box is-size-4">
+							  <p >Phase: </p>  &ensp; &ensp; <output id="font">Takeoff</output>
+							</div>
+						</nav>
+						<nav class="level box  ">
+							<div class="level-item is-size-3">Autopilot footage </div>
+						</nav>
+						<nav class="level">
+							<p id="padn" class="level-item is-size-6">Autopilot</p> 
+							<p class="level-item is-size-6 box">Status</p>  &ensp; &ensp; 
+							<a class="level-item is-size-5 button is-primary is-hovered is-medium"> Toggle</a>
+						</nav>
+						<nav class="level">
+							<p id="padn" class="level-item is-size-6">Controller Override</p>
+							<p class="level-item is-size-6 box"> Status </p>
+						</nav>
+						<nav class="level">
+							<p id="padn" class="level-item is-size-6">Launch Delivery </p>
+							<a class="level-item button is-primary is-hovered is-medium">/////</a>
+						</nav>
+						<nav class="level">
+							<p id="padn" class="level-item is-size-6">Halt Mission </p> 
+							<a class="level-item button is-warning is-hovered is-medium">/////</a>
+						</nav>
+					</div>
+				</div>
+			</div>
