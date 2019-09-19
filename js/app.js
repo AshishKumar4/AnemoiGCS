@@ -245,3 +245,19 @@ function generateWaypointEntry(destination, velocity, delay, id) {
 	out += '<td><button type="button" class="icon is-medium mdi mdi-24px mdi-delete-forever remove"><i class="glyphicon glyphicon-remove-sign"></i></button></td>';
 	return out;
 }
+
+
+/*
+CONSOLE
+*/
+
+function executeInput() {
+				var str1=document.getElementById("inputCommand").value;
+				var new_str=str1.toString().slice(9);		
+				document.getElementById("textar").value = " $" +new_str + "\n $>";
+				executeCommand(new_str);
+		}
+
+function executeCommand(new_str){
+	//used to execute the command
+}			
