@@ -91,18 +91,3 @@
 #map-draw {
 	height: 50vh;
 }
-#pad {
-	padding-left: 30px;
-}
-#padn {
-	padding-right: 30px;
-}
-#font {
-	padding-right: 40px;
-	font-size: large;
-}
-#map {
-   width: 100%;
-   height: 300px;
-   background-color: grey;
- }
