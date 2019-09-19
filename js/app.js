@@ -126,13 +126,6 @@ function initialize() {
 	
 }
 
-async function controllerCommander()
-{
-	console.log('got here');
-	controllerObj.ExecutorSerial();
-	console.log('Exited');
-}
-
 function connectController() {
 	if (statusControllerConnection) {
 		delete controllerObj
@@ -160,8 +153,26 @@ function connectController() {
 	}
 }
 
+var uavChecker;
+
+function UAVConnectionCheck()
+{
+	if (uavObj == null || uavObj.connectionStatus != 0)
+	{
+		if(uavObj != null)
+		{
+			console.log(uavObj.connectionStatus)
+			uavObj.closeConnections();
+		}
+		updateVariable('statusUAVConnection', 0)
+		console.log("UAV Connection Broke!!!")
+		clearInterval(uavChecker);
+	}
+}
+
 function connectUAV() {
 	if (statusUAVConnection) {
+		uavObj.closeConnections();
 		delete uavObj
 		console.log("UAV Disconnected!")
 		updateVariable('statusUAVConnection', 0)
@@ -175,10 +186,13 @@ function connectUAV() {
 		controllerObj.setUAV(uavObj);
 	}
 	if (uavObj.connectionStatus == 0) {
+		uavChecker = setInterval(UAVConnectionCheck, 500);
 		console.log("UAV Successfully Connected!")
 		updateVariable('statusUAVConnection', 1)
 	}
 	else {
+		console.log(uavObj.connectionStatus)
+		uavObj.closeConnections();
 		console.log("UAV Could not be connected!")
 	}
 }
@@ -217,6 +231,7 @@ function toggleNavigation()
 
 $(function () {
     $("#btnAdd").bind("click", function () {
+		console.log("clicked");
 		destination = $('#destination').val();
 		velocity = $('#velocity').val();
 		delay = $('#delay').val();
@@ -226,7 +241,12 @@ $(function () {
 
 		var dd = destination.split(',')
 		console.log(dd)
-		var id = uavObj.addWaypoint(parseFloat(dd[0]), parseFloat(dd[1]), parseFloat(dd[2]))
+		var id;
+
+		if(parseInt(delay) == 1)
+			id = uavObj.gotoLocation(parseFloat(dd[0]), parseFloat(dd[1]), parseFloat(dd[2]), parseFloat(velocity))
+		else 
+			id = uavObj.addWaypoint(parseFloat(dd[0]), parseFloat(dd[1]), parseFloat(dd[2]), parseFloat(velocity))
 		
         var div = $("<tr/>");
         div.html(generateWaypointEntry(destination, velocity, delay, id));
