@@ -246,7 +246,6 @@ function generateWaypointEntry(destination, velocity, delay, id) {
 	return out;
 }
 
-
 /*
 CONSOLE
 */
@@ -260,4 +259,22 @@ function executeInput() {
 
 function executeCommand(new_str){
 	//used to execute the command
-}			
+}		
+
+function Log(){
+	//get log entries in the table frontend
+}	
+
+function refreshLog(){
+	//refresh the entire log table
+}
+
+function downloadLog(){
+	//DOWNLOAD LOG TABLE
+}
+function eraseLog(){
+	//truncate entries
+}
+function cancelLog(){
+	//
+}
