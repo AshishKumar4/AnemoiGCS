@@ -82,10 +82,6 @@ function loadHTML(file, elem) {
 */
 
 function initialize() {
-<<<<<<< HEAD
-	console.log("Loading AnemoiLink Native Module")
-=======
->>>>>>> 14ea74af77d6c66409169ac4340a8dfee153b250
 	fs = require('fs'); // Load the File System to execute our common tasks (CRUD)
 	console.log("Module loaded")
 
@@ -122,26 +118,18 @@ function initialize() {
 	registerUpdates('statusUAVConnection', 1, 'iconUavStatusBat.className', "mdi mdi-24px mdi-battery")
 	registerUpdates('statusUAVConnection', 1, 'iconUuavStatusNet.className', "mdi mdi-24px mdi-network-strength")
 
-<<<<<<< HEAD
-	currentPane = 'tuning'
-	var d = document.getElementById("panel-view")
-	loadHTML('./views/' + currentPane + '.html', d)
-	anemoiLink = require('bindings')('Drone.node')
-=======
 	currentPane = 'dashboard'
 	var d = document.getElementById("panel-view")
 	loadHTML('./views/' + currentPane + '.html', d)
 	console.log("Loading AnemoiLink Native Module")
 	anemoiLink = require('bindings')('Drone.node')
-	
+
 }
 
-async function controllerCommander()
-{
+async function controllerCommander() {
 	console.log('got here');
 	controllerObj.ExecutorSerial();
 	console.log('Exited');
->>>>>>> 14ea74af77d6c66409169ac4340a8dfee153b250
 }
 
 function connectController() {
@@ -164,8 +152,7 @@ function connectController() {
 	if (controllerObj.connectionStatus == 0) {
 		console.log("Controller Successfully Connected!")
 		updateVariable('statusControllerConnection', 1)
-	}
-	else {
+	} else {
 		console.log("Controller Could not be connected!")
 		console.log(controllerObj.connectionStatus)
 	}
@@ -204,8 +191,7 @@ function connectUAV() {
 		uavChecker = setInterval(UAVConnectionCheck, 500);
 		console.log("UAV Successfully Connected!")
 		updateVariable('statusUAVConnection', 1)
-	}
-	else {
+	} else {
 		console.log(uavObj.connectionStatus)
 		uavObj.closeConnections();
 		console.log("UAV Could not be connected!")
@@ -220,7 +206,7 @@ function switchPane(value) {
 	if (currentPane == value)
 		return;
 	currentPane = value;
-	var d = document.getElementById("panel-view")//("panel-embed");
+	var d = document.getElementById("panel-view") //("panel-embed");
 	//d.setAttribute('src', './' + value + '.html');
 	loadHTML('./views/' + value + '.html', d)
 }
@@ -232,8 +218,7 @@ function toggleNavigation() {
 		uavObj.enableAutoNav();
 		btnToggleNav.classList = 'button is-danger';
 		btnToggleNav.innerText = 'Stop Navigation';
-	}
-	else {
+	} else {
 		statusNav = 0;
 		uavObj.disableAutoNav();
 		btnToggleNav.classList = 'button is-warning';
@@ -307,41 +292,42 @@ function generateWaypointEntry(destination, velocity, delay, id) {
 
 //For the map in GPS Page
 function myMap() {
-	var mapProp= {
-	  center:new google.maps.LatLng(82.508742,-0.120850),
-	  zoom:5,
+	var mapProp = {
+		center: new google.maps.LatLng(82.508742, -0.120850),
+		zoom: 5,
 	};
-	var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+	var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+}
 
 /*
 CONSOLE
 */
 
 function executeInput() {
-				var str1=document.getElementById("inputCommand").value;
-				var new_str=str1.toString().slice(9);		
-				document.getElementById("textar").value = " $" +new_str + "\n $>";
-				executeCommand(new_str);
-		}
+	var str1 = document.getElementById("inputCommand").value;
+	var new_str = str1.toString().slice(9);
+	document.getElementById("textar").value = " $" + new_str + "\n $>";
+	executeCommand(new_str);
+}
 
-function executeCommand(new_str){
+function executeCommand(new_str) {
 	//used to execute the command
-}		
+}
 
-function Log(){
+function Log() {
 	//get log entries in the table frontend
-}	
+}
 
-function refreshLog(){
+function refreshLog() {
 	//refresh the entire log table
 }
 
-function downloadLog(){
+function downloadLog() {
 	//DOWNLOAD LOG TABLE
 }
-function eraseLog(){
+
+function eraseLog() {
 	//truncate entries
 }
-function cancelLog(){
-	//
-}
+
+function cancelLog() {}
