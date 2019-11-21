@@ -14,6 +14,7 @@
 	<!-- <script src="https://code.jquery.com/jquery-latest.js"></script> -->
 	<script type="text/javascript" src="../js/jquery.js"></script>
 	<script type="text/javascript" src="../js/app.js"></script>
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
 <body>
@@ -80,6 +81,8 @@
 							<li><a onclick="switchPane('missions')" class="sidebar-btn">Missions</a></li>
 							<li><a onclick="switchPane('status')" class="sidebar-btn">Status</a></li>
 							<li><a onclick="switchPane('sensors')" class="sidebar-btn">Sensors</a></li>
+							<li><a onclick="switchPane('tuning')" class="sidebar-btn">Tuning</a></li>
+							<li><a onclick="switchPane('gps')" class="sidebar-btn">GPS</a></li>
 						</ul>
 
 						<p class="menu-label">
@@ -92,6 +95,7 @@
 							<li><a onclick="switchPane('miscellaneous')" class="sidebar-btn">Miscellaneous</a></li>
 							<li><a onclick="switchPane('debug')" class="sidebar-btn">Debug</a></li>
 							<li><a onclick="switchPane('console')" class="sidebar-btn">Console</a></li>
+							<li><a onclick="switchPane('advancedTuning')" class="sidebar-btn">Advanced Tuning</a></li>
 						</ul>
 						<script>
 							var btns = document.getElementsByClassName("sidebar-btn");
@@ -114,6 +118,7 @@
 	<script>
 		initialize();
 	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0iWltvFd_Y4yom-IGNZ9jHjlzCJDAiVw&callback=myMap"></script>
 </body>
 
 </html>
