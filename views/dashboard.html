@@ -1,15 +1,185 @@
-<div class="tile is-ancestor">
+	<link rel="stylesheet" href="../css/dashboard.css">
+	<script type="text/javascript" src="../js/video.js"></script>
+	<script type="text/javascript" src="../js/video.es.js"></script>
+	<script type="text/javascript" src="../js/video.cjs.js"></script>
+
+
+	<div class="tile is-ancestor">
 	<div class="tile is-parent">
-		<article id="video-feed" class="tile is-child notification is-primary">
-			Video Feed Here
-			<!-- <div id="front-camera" class="box">
+		<div class="column is-child">
+			<div class="level">
+						<article id="video-feed" class="level-item">
+							<video id='my-video' class='video-js is-primary' controls preload='auto' width='640' height='364' poster='MY_VIDEO_POSTER.jpg' data-setup='{}'>
+    						<source src='MY_VIDEO.mp4' type='video/mp4'>
+    						<source src='MY_VIDEO.webm' type='video/webm'>
+    						<p class='vjs-no-js'>
+      								To view this video please enable JavaScript, and consider upgrading to a web browser that
+      						<a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+    						</p>
+  							</video>
+  							<script src='https://vjs.zencdn.net/7.6.0/video.js'></script>
+								<!-- <div id="front-camera" class="box">
 					
 											</div> -->
-		</article>
-	</div>
-	<div class="tile is-parent">
-		<article id="uav-status" class="tile is-child notification is-info">
-			Status: <br> Velocity :
-		</article>
-	</div>
-</div>
+						</article>
+					</div>
+					<div class="level">
+						<article class="level-item">
+							<div id="map">
+							<script>
+							// Initialize and add the map
+							function initMap() {
+  							// The location of Uluru
+  							var uluru = {lat: -25.344, lng: 131.036};
+  							// The map, centered at Uluru
+  							var map = new google.maps.Map(
+      						document.getElementById('map'), {zoom: 4, center: uluru});
+  							// The marker, positioned at Uluru
+  							var marker = new google.maps.Marker({position: uluru, map: map});
+							}
+    					</script>
+    				</div>
+						</article>
+					</div>
+				</div>
+				<div class="column is-child">
+						<nav class="level">
+							<p class="level-left">
+								<strong class="is-size-3">Status </strong>
+							</p>
+						</nav>	
+						<nav class="level">
+							<p class="level-left is-size-5">Velocity : <u><output id="Velocity"> </output></u> </p>
+							<p style="padding-left: 60px;" class="level-item is-size-5">Direction: <u><output id="Direction"> </output> </u> </p> 
+						</nav>		
+						<nav class="level">	
+							<p class="level-left is-size-5"> Altitude: <p id="Altitude">       </p>
+							</p>
+						</nav>
+						<hr>
+						<nav class="level box">
+							<div class="level-item is-size-5">
+							  <p >Phase: </p>  &ensp;&ensp; <output id="font">Takeoff</output>
+							</div>
+						</nav>
+						<nav class="level box  ">
+							<div class="level-item is-size-5">Autopilot footage </div>
+						</nav>
+						<div class="box">
+							<table class="table">
+  								<thead>
+    								<tr class="level">
+    									<p class="level-left is-size-3">Info</p>
+    								</tr>
+    							</thead>
+    							<br>
+    							<tbody>
+    								<tr>
+    									<nav class="level">
+    									<p class="level-left">Arming disable flags:</p>
+    									<p class="level-right">NO_GYRO RX_FAILSAFE PARALYSE </p>
+    								</nav>
+    								</tr>
+    								<tr>
+    									<nav class="level">
+    									<p class="level-left">Battery Voltage:</p>
+    									<p class="level-right"> 0 V</p>
+    								</nav>
+    								</tr>
+    								<tr>
+    									<nav class="level">
+    									<p class="level-left">Capacity Drawn:</p>
+    									<p class="level-right"> 0 mAh</p>
+    								</nav>
+    								</tr>
+    								<tr>
+    									<nav class="level">
+    									<p class="level-left">Current Draw:</p>
+    									<p class="level-right"> 0.00 A </p>
+    								</nav>
+    								</tr>
+    								<tr>
+    									<nav class="level">
+    									<p class="level-left">RSSI:</p>
+    									<p class="level-right"> 0 % </p>
+    								</nav>
+    								</tr>
+    							</tbody>
+    						</table>
+						</div>
+
+						<div class="box">
+							<table class="table">
+  								<thead>
+    								<tr class="level">
+    									<p class="level-left is-size-3">GPS</p>
+    								</tr>
+    							</thead>
+    							<br>
+    							<tbody>
+    								<tr>
+    									<nav class="level">
+    									<p class="level-left">3D Fix:</p>
+    									<p class="level-right"></p>
+    								</nav>
+    								</tr>
+    								<tr>
+    									<nav class="level">
+    									<p class="level-left">Stats:</p>
+    									<p class="level-right"></p>
+    								</nav>
+    								</tr>
+    								<tr>
+    									<nav class="level">
+    									<p class="level-left">Latitude:</p>
+    									<p class="level-right"> </p>
+    								</nav>
+    								</tr>
+    								<tr>
+    									<nav class="level">
+    									<p class="level-left">longitudes:</p>
+    									<p class="level-right"></p>
+    								</nav>
+    								</tr>
+    							</tbody>
+    						</table>
+						</div>
+
+						<div class="box">
+							<table class="table">
+  								<thead>
+    								<tr class="level">
+    									<p class="level-left is-size-3">Instruments</p>
+    								</tr>
+    							</thead>
+    						</table>
+    						<br>
+							
+						</div>
+
+						<nav class="level">
+							<p id="padn" class="level-left is-size-6">Autopilot</p> 
+							<p class="level-item is-size-6 box">Status</p>  &ensp; &ensp; 
+							<a class="level-item is-size-6 button is-primary is-hovered is-medium"> Toggle</a>
+						</nav>
+						<nav class="level">
+							<p id="padn" class="level-left is-size-6">Controller Override</p>
+							<p class="level-item is-size-6 box is-small"> Status </p>
+						</nav>
+						<nav class="level">
+							<div class="level-left">
+							<p class=" level-item is-size-6">Launch Delivery </p>
+							&ensp; &ensp;
+							<a class="level-item button is-primary is-hovered is-focused">	&ensp; &ensp; ///// &ensp; &ensp;	</a>
+						</div>
+						</nav>
+						<nav class="level">
+							<div class="level-left">
+							<p class=" level-item is-size-6">Halt Mission </p> 
+							&ensp; &ensp;
+							<a class="level-item button is-warning is-hovered is-focused">	&ensp; &ensp; ///// &ensp; &ensp;	</a>
+						</div>
+						</nav>
+					</div>
+				</div>
+			</div>

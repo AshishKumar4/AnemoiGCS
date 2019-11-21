@@ -1,0 +1,19 @@
+.table{
+	table-layout: fixed;
+	border-collapse: collapse;
+}
+#tablediv{
+	overflow-y: scroll;
+	height: 300px;
+	display: block;
+}
+#logtable tr:nth-child(even){background-color: #f2f2f2;}
+
+#logtable tr:hover {background-color: #ddd;}
+
+#logtable td, #logtable th {
+  border: solid 1px;
+}
+td{
+	height:20px;
+}

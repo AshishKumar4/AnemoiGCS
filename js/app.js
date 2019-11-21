@@ -82,7 +82,10 @@ function loadHTML(file, elem) {
 */
 
 function initialize() {
+<<<<<<< HEAD
 	console.log("Loading AnemoiLink Native Module")
+=======
+>>>>>>> 14ea74af77d6c66409169ac4340a8dfee153b250
 	fs = require('fs'); // Load the File System to execute our common tasks (CRUD)
 	console.log("Module loaded")
 
@@ -119,10 +122,26 @@ function initialize() {
 	registerUpdates('statusUAVConnection', 1, 'iconUavStatusBat.className', "mdi mdi-24px mdi-battery")
 	registerUpdates('statusUAVConnection', 1, 'iconUuavStatusNet.className', "mdi mdi-24px mdi-network-strength")
 
+<<<<<<< HEAD
 	currentPane = 'tuning'
 	var d = document.getElementById("panel-view")
 	loadHTML('./views/' + currentPane + '.html', d)
 	anemoiLink = require('bindings')('Drone.node')
+=======
+	currentPane = 'dashboard'
+	var d = document.getElementById("panel-view")
+	loadHTML('./views/' + currentPane + '.html', d)
+	console.log("Loading AnemoiLink Native Module")
+	anemoiLink = require('bindings')('Drone.node')
+	
+}
+
+async function controllerCommander()
+{
+	console.log('got here');
+	controllerObj.ExecutorSerial();
+	console.log('Exited');
+>>>>>>> 14ea74af77d6c66409169ac4340a8dfee153b250
 }
 
 function connectController() {
@@ -285,6 +304,7 @@ function generateWaypointEntry(destination, velocity, delay, id) {
 	out += '<td><button type="button" class="icon is-medium mdi mdi-24px mdi-delete-forever remove"><i class="glyphicon glyphicon-remove-sign"></i></button></td>';
 	return out;
 }
+
 //For the map in GPS Page
 function myMap() {
 	var mapProp= {
@@ -292,4 +312,36 @@ function myMap() {
 	  zoom:5,
 	};
 	var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+/*
+CONSOLE
+*/
+
+function executeInput() {
+				var str1=document.getElementById("inputCommand").value;
+				var new_str=str1.toString().slice(9);		
+				document.getElementById("textar").value = " $" +new_str + "\n $>";
+				executeCommand(new_str);
+		}
+
+function executeCommand(new_str){
+	//used to execute the command
+}		
+
+function Log(){
+	//get log entries in the table frontend
+}	
+
+function refreshLog(){
+	//refresh the entire log table
+}
+
+function downloadLog(){
+	//DOWNLOAD LOG TABLE
+}
+function eraseLog(){
+	//truncate entries
+}
+function cancelLog(){
+	//
 }
