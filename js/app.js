@@ -114,7 +114,7 @@ function initialize() {
 	registerUpdates('statusUAVConnection', 0, 'uavObj', null)
 	registerUpdates('statusUAVConnection', 0, 'btnUAVConnect.textContent', 'Connect')
 	registerUpdates('statusUAVConnection', 0, 'btnUAVConnect.className', classBtnConnectFailure)
-	
+
 	registerUpdates('statusUAVConnection', 0, 'iconUavStatusBat.className', "mdi mdi-24px mdi-battery-alert")
 	registerUpdates('statusUAVConnection', 0, 'iconUuavStatusNet.className', "mdi mdi-24px mdi-network-strength-off")
 	registerUpdates('statusUAVConnection', 1, 'iconUavStatusBat.className', "mdi mdi-24px mdi-battery")
@@ -123,7 +123,7 @@ function initialize() {
 	currentPane = 'new_mission'
 	var d = document.getElementById("panel-view")
 	loadHTML('./views/' + currentPane + '.html', d)
-	
+
 }
 
 function connectController() {
@@ -155,12 +155,9 @@ function connectController() {
 
 var uavChecker;
 
-function UAVConnectionCheck()
-{
-	if (uavObj == null || uavObj.connectionStatus != 0)
-	{
-		if(uavObj != null)
-		{
+function UAVConnectionCheck() {
+	if (uavObj == null || uavObj.connectionStatus != 0) {
+		if (uavObj != null) {
 			console.log(uavObj.connectionStatus)
 			uavObj.closeConnections();
 		}
@@ -210,18 +207,15 @@ function switchPane(value) {
 	loadHTML('./views/' + value + '.html', d)
 }
 
-function toggleNavigation()
-{
+function toggleNavigation() {
 	btnToggleNav = document.getElementById('btn-toggleNav');
-	if(!statusNav)
-	{
+	if (!statusNav) {
 		statusNav = 1;
 		uavObj.enableAutoNav();
 		btnToggleNav.classList = 'button is-danger';
 		btnToggleNav.innerText = 'Stop Navigation';
 	}
-	else 
-	{
+	else {
 		statusNav = 0;
 		uavObj.disableAutoNav();
 		btnToggleNav.classList = 'button is-warning';
@@ -229,33 +223,60 @@ function toggleNavigation()
 	}
 }
 
-$(function () {
-    $("#btnAdd").bind("click", function () {
-		console.log("clicked");
-		destination = $('#destination').val();
-		velocity = $('#velocity').val();
-		delay = $('#delay').val();
-		$('#destination').val('');
-		$('#velocity').val('');
-		$('#delay').val('');
+function addWaypoint() {
+	console.log("clicked");
+	destination = document.getElementById('destination').value;
+	velocity = document.getElementById('velocity').value
+	delay = document.getElementById('delay').value
+	// $('#destination').val('');
+	// $('#velocity').val('');
+	// $('#delay').val('');
+	document.getElementById('destination').value = '';
+	document.getElementById('velocity').value = '';
+	document.getElementById('delay').value = '';
 
-		var dd = destination.split(',')
-		console.log(dd)
-		var id;
+	var dd = destination.split(',')
+	console.log(dd)
+	var id;
 
-		if(parseInt(delay) == 1)
-			id = uavObj.gotoLocation(parseFloat(dd[0]), parseFloat(dd[1]), parseFloat(dd[2]), parseFloat(velocity))
-		else 
-			id = uavObj.addWaypoint(parseFloat(dd[0]), parseFloat(dd[1]), parseFloat(dd[2]), parseFloat(velocity))
-		
-        var div = $("<tr/>");
-        div.html(generateWaypointEntry(destination, velocity, delay, id));
-        $("#TextBoxContainer").append(div);
-    });
-    $("body").on("click", ".remove", function () {
-        $(this).closest("tr").remove();
-    });
-});
+	if (parseInt(delay) == 1)
+		id = uavObj.gotoLocation(parseFloat(dd[0]), parseFloat(dd[1]), parseFloat(dd[2]), parseFloat(velocity))
+	else
+		id = uavObj.addWaypoint(parseFloat(dd[0]), parseFloat(dd[1]), parseFloat(dd[2]), parseFloat(velocity))
+
+	// var div = $("<tr/>");
+	// div.html(generateWaypointEntry(destination, velocity, delay, id));
+
+	document.getElementById('TextBoxContainer').innerHTML += generateWaypointEntry(destination, velocity, delay, id);
+}
+
+// $(function () {
+//     $("#btnAdd").bind("click", function () {
+// 		console.log("clicked");
+// 		destination = $('#destination').val();
+// 		velocity = $('#velocity').val();
+// 		delay = $('#delay').val();
+// 		$('#destination').val('');
+// 		$('#velocity').val('');
+// 		$('#delay').val('');
+
+// 		var dd = destination.split(',')
+// 		console.log(dd)
+// 		var id;
+
+// 		if(parseInt(delay) == 1)
+// 			id = uavObj.gotoLocation(parseFloat(dd[0]), parseFloat(dd[1]), parseFloat(dd[2]), parseFloat(velocity))
+// 		else 
+// 			id = uavObj.addWaypoint(parseFloat(dd[0]), parseFloat(dd[1]), parseFloat(dd[2]), parseFloat(velocity))
+
+//         var div = $("<tr/>");
+//         div.html(generateWaypointEntry(destination, velocity, delay, id));
+//         $("#TextBoxContainer").append(div);
+//     });
+//     $("body").on("click", ".remove", function () {
+//         $(this).closest("tr").remove();
+//     });
+// });
 
 function generateWaypointEntry(destination, velocity, delay, id) {
 	var out = '<td>' + id + '</td>';
